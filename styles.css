@@ -1,0 +1,328 @@
+/* General Body Styles */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: #1e1e1e;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 15px;
+    transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+    color: #00bcd4;
+    transform: scale(1.1);
+}
+
+/* Banner Styling */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('images/banner.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background-size: cover;
+    background-position: center center;
+}
+
+.banner .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.banner-content {
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 20px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.banner-content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: font-size 0.3s ease;
+}
+
+.banner-content p {
+    font-size: 22px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #00bcd4;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 18px 35px;
+    font-size: 20px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.5);
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #028e92;
+    transform: scale(1.05);
+}
+
+/* Section Styling */
+.section {
+    padding: 80px 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Home Content Section */
+.home-content {
+    color: #ffffff;
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+.home-content h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.home-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.home-content .cta-button {
+    background-color: #00bcd4;
+    color: #ffffff;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.home-content .cta-button:hover {
+    background-color: #028e92;
+    transform: scale(1.05);
+}
+
+/* Responsiveness for Smaller Screens */
+@media (max-width: 768px) {
+    .banner-content h1 {
+        font-size: 40px;
+    }
+
+    .banner-content p {
+        font-size: 18px;
+    }
+
+    .cta-button {
+        font-size: 18px;
+        padding: 15px 30px;
+    }
+
+    .home-content h2 {
+        font-size: 28px;
+    }
+
+    .home-content p {
+        font-size: 16px;
+    }
+}
+
+/* Adding Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Season Cards Styling */
+.season-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.season-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.season-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.season-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.season-info {
+    padding: 20px;
+    text-align: left;
+    color: #fff;
+}
+
+.season-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.season-info p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+/* Banner for Seasons */
+.banner-seasons {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: url('images/banner2.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.banner-seasons h1 {
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Season-Specific Backgrounds */
+.spring {
+    background: url('images/seasons/spring.png') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.summer {
+    background: url('images/seasons/summer.png') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.autumn {
+    background: url('images/seasons/autumn.png') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.winter {
+    background: url('images/seasons/winter.png') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.monsoon {
+    background: url('images/seasons/monsoon.png') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.pre-winter {
+    background: url('images/seasons/pre-winter.png') no-repeat center center/cover;
+    background-size: cover;
+}
+
+/* Banner for Visitors */
+.banner-visitors {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('images/banner3.png') no-repeat center center/cover;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.banner-visitors .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.banner-visitors .banner-content {
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 20px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.banner-visitors .banner-content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.banner-visitors .banner-content p {
+    font-size: 22px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
