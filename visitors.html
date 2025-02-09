@@ -30,14 +30,14 @@
     <script>
         // Function to fetch the visitor's IP info (country and flag)
         function fetchVisitorInfo() {
-            // Using ip-api for demonstration; you could replace this with another service
+            // Fetching visitor data using ipgeolocation.io API
             fetch('https://api.ipgeolocation.io/ipgeo?apiKey=50b6f7439ac94f92aea70d107f24e9c9')
                 .then(response => response.json())
                 .then(data => {
                     const visitorList = document.getElementById("visitor-list");
-                    const country = data.country;
-                    const countryCode = data.countryCode.toLowerCase(); // For flag
-                    const ip = data.query; // IP address of the visitor
+                    const country = data.country_name; // Country name
+                    const countryCode = data.country_code2.toLowerCase(); // Country code for flag
+                    const ip = data.ip; // Visitor's IP address
 
                     // Create the HTML content for the visitor
                     const visitorInfo = `
