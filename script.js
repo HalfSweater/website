@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to fetch the visitor's IP info (country and flag)
     function fetchVisitorInfo() {
         // Using ip-api for demonstration; you could replace this with another service
-        fetch('http://ip-api.com/json/')
+        fetch('https://api.ipgeolocation.io/ipgeo?apiKey=50b6f7439ac94f92aea70d107f24e9c9')
             .then(response => response.json())
             .then(data => {
                 const visitorList = document.getElementById("visitor-list");
