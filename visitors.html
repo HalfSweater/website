@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitors - Birds Nepal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="seasons.html">Season</a>
+        <a href="visitors.html">Visitors</a>
+    </nav>
+
+    <div class="banner-visitors">
+        <div class="overlay"></div>
+        <div class="banner-content">
+            <h1>Visitors</h1>
+            <p>See the visitors who have explored our website.</p>
+        </div>
+    </div>
+
+    <div id="visitors" class="section">
+        <h2>Our Visitors</h2>
+        <div id="visitor-list"></div>
+    </div>
+
+    <script>
+        // Function to fetch the visitor's IP info (country and flag)
+        function fetchVisitorInfo() {
+            // Fetching visitor data using ipgeolocation.io API
+            fetch('https://api.ipgeolocation.io/ipgeo?apiKey=50b6f7439ac94f92aea70d107f24e9c9')
+                .then(response => response.json())
+                .then(data => {
+                    const visitorList = document.getElementById("visitor-list");
+                    const country = data.country_name; // Country name
+                    const countryCode = data.country_code2.toLowerCase(); // Country code for flag
+                    const ip = data.ip; // Visitor's IP address
+
+                    // Create the HTML content for the visitor
+                    const visitorInfo = `
+                        <div class="visitor">
+                            <p><strong>IP Address:</strong> ${ip}</p>
+                            <p><strong>Country:</strong> ${country}</p>
+                            <img src="https://flagcdn.com/16x12/${countryCode}.png" alt="${country} flag" />
+                        </div>
+                    `;
+
+                    // Append to the visitor list
+                    visitorList.innerHTML = visitorInfo;
+                })
+                .catch(error => console.error('Error fetching visitor data:', error));
+        }
+
+        // Call the function when the page loads
+        document.addEventListener("DOMContentLoaded", fetchVisitorInfo);
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
