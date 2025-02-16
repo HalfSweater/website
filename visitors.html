@@ -5,31 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visitors - Birds Nepal</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        #visitors {
-            padding: 20px;
-        }
-        .visitor-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .visitor {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .visitor img {
-            margin-top: 10px;
-        }
-    </style>
 </head>
 <body>
     <nav>
@@ -49,12 +24,13 @@
 
     <div id="visitors" class="section">
         <h2>Our Visitors</h2>
-        <div id="visitor-list" class="visitor-list"></div>
+        <div id="visitor-list"></div>
     </div>
 
     <script>
         // Function to fetch the visitor's IP info (country and flag)
         function fetchVisitorInfo() {
+            // Fetching visitor data using ipgeolocation.io API
             fetch('https://api.ipgeolocation.io/ipgeo?apiKey=50b6f7439ac94f92aea70d107f24e9c9')
                 .then(response => response.json())
                 .then(data => {
@@ -63,55 +39,23 @@
                     const countryCode = data.country_code2.toLowerCase(); // Country code for flag
                     const ip = data.ip; // Visitor's IP address
 
-                    // Create a new visitor object
-                    const visitor = {
-                        ip: ip,
-                        country: country,
-                        flag: `https://flagcdn.com/16x12/${countryCode}.png`
-                    };
+                    // Create the HTML content for the visitor
+                    const visitorInfo = `
+                        <div class="visitor">
+                            <p><strong>IP Address:</strong> ${ip}</p>
+                            <p><strong>Country:</strong> ${country}</p>
+                            <img src="https://flagcdn.com/16x12/${countryCode}.png" alt="${country} flag" />
+                        </div>
+                    `;
 
-                    // Retrieve visitors from localStorage or initialize an empty array
-                    let visitors = JSON.parse(localStorage.getItem('visitors')) || [];
-
-                    // Add the new visitor to the beginning of the array
-                    visitors.unshift(visitor);
-
-                    // Keep only the last 5 visitors
-                    visitors = visitors.slice(0, 5);
-
-                    // Save the updated visitors back to localStorage
-                    localStorage.setItem('visitors', JSON.stringify(visitors));
-
-                    // Display the visitors
-                    displayVisitors(visitors);
+                    // Append to the visitor list
+                    visitorList.innerHTML = visitorInfo;
                 })
                 .catch(error => console.error('Error fetching visitor data:', error));
         }
 
-        // Function to display visitors
-        function displayVisitors(visitors) {
-            const visitorList = document.getElementById("visitor-list");
-            visitorList.innerHTML = '';
-
-            visitors.forEach(visitor => {
-                const visitorInfo = `
-                    <div class="visitor">
-                        <p><strong>IP Address:</strong> ${visitor.ip}</p>
-                        <p><strong>Country:</strong> ${visitor.country}</p>
-                        <img src="${visitor.flag}" alt="${visitor.country} flag" />
-                    </div>
-                `;
-                visitorList.innerHTML += visitorInfo;
-            });
-        }
-
-        // On page load, fetch visitor info and display existing visitors
-        document.addEventListener("DOMContentLoaded", () => {
-            fetchVisitorInfo();
-
-            const visitors = JSON.parse(localStorage.getItem('visitors')) || [];
-            displayVisitors(visitors);
-        });
+        // Call the function when the page loads
+        document.addEventListener("DOMContentLoaded", fetchVisitorInfo);
     </script>
 
     <script src="script.js"></script>
