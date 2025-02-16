@@ -19,18 +19,18 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 const visitorList = document.getElementById("visitor-list");
-                const country = data.country_name; // Corrected key for country name
-                const countryCode = data.country_code2.toLowerCase(); // Corrected key for country code
+                const country = data.country;
+                const countryCode = data.countryCode.toLowerCase(); // For flag
                 const ip = data.ip; // Corrected key for IP
 
                 // Create the HTML content for the visitor
-                const visitorInfo = `
+                const visitorInfo = 
                     <div class="visitor">
                         <p><strong>IP Address:</strong> ${ip}</p>
                         <p><strong>Country:</strong> ${country}</p>
                         <img src="https://flagcdn.com/16x12/${countryCode}.png" alt="${country} flag" />
                     </div>
-                `;
+                ;
 
                 // Append to the visitor list
                 visitorList.innerHTML = visitorInfo;
