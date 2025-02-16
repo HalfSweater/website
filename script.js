@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 const visitorList = document.getElementById("visitor-list");
-                const country = data.country;
-                const countryCode = data.countryCode.toLowerCase(); // For flag
+                const country = data.country_name; // Corrected key for country name
+                const countryCode = data.country_code2.toLowerCase(); // Corrected key for country code
                 const ip = data.ip; // Corrected key for IP
 
                 // Create the HTML content for the visitor
