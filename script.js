@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "autumn": "autumn.html",
             "winter": "winter.html",
             "monsoon": "monsoon.html",
-            "pre-winter": "pre-winter.html",
+            "migratory-birds": "migratory-birds.html",
         };
 
         function redirectToSeasonPage(event) {
